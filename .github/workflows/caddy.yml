@@ -103,16 +103,16 @@ jobs:
       #                    view, See Image, https://hub.docker.com/r/${{ secrets.DOCKER_HUB_USR}}/caddy/tags" \
       #       ${{ secrets.NTFY_URL }}
       # - name: Notify Docker Fail
-        if: always() && steps.build.outcome  == 'success' && (steps.build_docker.outcome  == 'failed' || steps.build_docker.outcome  == 'skipped')
-        run: |
-          curl \
-            -u ${{ secrets.NTFY_CRED }} \
-            -H "Title: New Caddy Release" \
-            -H "Content-Type: text/plain" \
-            -H "Priority: 4" \
-            -H "Tag: pushpin" \
-            -d "New Version: ${{ steps.caddy_version.outputs.tag_name }}
-          Docker Image Updated: ⛔" \
-            -H "Actions: view, See Release, ${{ steps.create_release.outputs.url }}; \
-                         view, See Image, https://hub.docker.com/r/${{ secrets.DOCKER_HUB_USR}}/caddy/tags" \
-                ${{ secrets.NTFY_URL }}
+        # if: always() && steps.build.outcome  == 'success' && (steps.build_docker.outcome  == 'failed' || steps.build_docker.outcome  == 'skipped')
+        # run: |
+        #   curl \
+        #     -u ${{ secrets.NTFY_CRED }} \
+        #     -H "Title: New Caddy Release" \
+        #     -H "Content-Type: text/plain" \
+        #     -H "Priority: 4" \
+        #     -H "Tag: pushpin" \
+        #     -d "New Version: ${{ steps.caddy_version.outputs.tag_name }}
+        #   Docker Image Updated: ⛔" \
+        #     -H "Actions: view, See Release, ${{ steps.create_release.outputs.url }}; \
+        #                  view, See Image, https://hub.docker.com/r/${{ secrets.DOCKER_HUB_USR}}/caddy/tags" \
+        #         ${{ secrets.NTFY_URL }}
